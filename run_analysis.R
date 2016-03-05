@@ -1,6 +1,6 @@
 library(dplyr)
 
-setwd("/Users/wmorgan85/rwork")
+setwd("~/rwork/cleanData/")
 
 data_dir <- "UCI HAR Dataset"
 
