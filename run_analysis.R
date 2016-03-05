@@ -18,7 +18,6 @@ train_set <- read.table(train_file)
 test_set <- read.table(test_file)
 full_set <- rbind(test_set, train_set)
 
-
 # merge activities
 train_activity <- read.table(train_activity_file)
 test_activity <- read.table(test_activity_file)
@@ -71,4 +70,3 @@ long_set <- gather(core_set, variable, level, -c(activity_label,subject_id))
 # group and apply
 result_output <- group_by(long_set, activity_label, subject_id, variable) %>%
   summarise(avg = mean(level))
-
