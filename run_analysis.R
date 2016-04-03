@@ -44,7 +44,7 @@ rm(test_subject)
 rm(features)
 
 # find features containing mean/std, then rename cols
-feat_list <- c(grep(x = feature_names, pattern = "mean"), grep(x = feature_names, pattern = "std"))
+feat_list <- c(grep(x = feature_names, pattern = "mean()", fixed = T), grep(x = feature_names, pattern = "std()", fixed = T))
 core_set <- full_set[,feat_list]
 names(core_set) <- feature_names[feat_list]
 
@@ -61,12 +61,6 @@ activities <- factor(c("WALKING","WALKING_UPSTAIRS","WALKING_DOWNSTAIRS",
                        "SITTING","STANDING","LAYING"))
 levels(core_set$activity_label) <- activities
 
-# convert to long data set
-long_set <- gather(core_set, variable, level, -c(activity_label,subject_id))
-
-# if splitting further into core features of each variable, separate with...
-#separate_set <- separate(long_set, variable, c("variable","measure","axis"))
-
 # group and apply
-result_output <- group_by(long_set, activity_label, subject_id, variable) %>%
-  summarise(avg = mean(level))
+result_output <- group_by(core_set, activity_label, subject_id) %>%
+  summarise_each(funs(mean))

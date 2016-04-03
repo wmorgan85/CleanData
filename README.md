@@ -16,9 +16,3 @@ This project focuses on cleaning Samsung smartphone accelerometer data and shapi
 8. Convert the data set into a long data frame by gathering all feature variables
 9. (optional) Separate the feature variables into the constituent components of feature, measure and axis
 10. Group and summarise the result set on activity, subject id and variable
-
-## Code Book
-* activity_label - the activity being performed when the measurement was taken
-* subject_id - the numeric identifier for the subject being measured
-* variable - the feature being measured
-* avg - the average value observed for the feature being measured for the given subject performing the given activity
